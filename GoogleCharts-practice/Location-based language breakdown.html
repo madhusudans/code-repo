@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Location-based Language breakdown</title>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+		
+		//("top");
+
+		
+		var spanish1=(function () {
+		var spanish1 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Los+Angeles%22.%0A++FILTER+(regex(%3Fg%2C%22Spanish%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				spanish1 = data.results.bindings.length;
+				//alert(spanish1);
+				}
+			});
+			return spanish1;
+		})();
+		
+		var korean1=(function () {
+		var korean1 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Los+Angeles%22.%0A++FILTER+(regex(%3Fg%2C%22korean%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				korean1 = data.results.bindings.length;
+				//alert(korean1);
+				}
+			});
+			return korean1;
+		})();
+		
+		var vietnamese1=(function () {
+		var vietnamese1 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Los+Angeles%22.%0A++FILTER+(regex(%3Fg%2C%22vietnamese%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				vietnamese1 = data.results.bindings.length;
+				//alert(vietnamese1);
+				}
+			});
+			return vietnamese1;
+		})();
+		
+		var russian1=(function () {
+		var russian1 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Los+Angeles%22.%0A++FILTER+(regex(%3Fg%2C%22russian%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				russian1 = data.results.bindings.length;
+				//alert(russian1);
+				}
+			});
+			return russian1;
+		})();
+		
+		var other=(function () {
+		var other = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Los+Angeles%22.%0A++FILTER+(!regex(%3Fg%2C%22spanish%22%2C%22i%22)%26%26!regex(%3Fg%2C%22korean%22%2C%22i%22)%26%26!regex(%3Fg%2C%22vietnamese%22%2C%22i%22)%26%26!regex(%3Fg%2C%22russian%22%2C%22i%22))%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				other = data.results.bindings.length;
+				//alert(other);
+				}
+			});
+			return other;
+		})();
+		
+		var spanish2=(function () {
+		var spanish2 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Las+Vegas%22.%0A++FILTER+(regex(%3Fg%2C%22Spanish%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				spanish2 = data.results.bindings.length;
+				//alert(spanish2);
+				}
+			});
+			return spanish2;
+		})();
+		
+		var korean2=(function () {
+		var korean2 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Las+Vegas%22.%0A++FILTER+(regex(%3Fg%2C%22korean%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				korean2 = data.results.bindings.length;
+				//alert(korean2);
+				}
+			});
+			return korean2;
+		})();
+		
+		var vietnamese2=(function () {
+		var vietnamese2 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Las+Vegas%22.%0A++FILTER+(regex(%3Fg%2C%22vietnamese%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				vietnamese2 = data.results.bindings.length;
+				//alert(vietnamese2);
+				}
+			});
+			return vietnamese2;
+		})();
+		
+		var russian2=(function () {
+		var russian2 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Las+Vegas%22.%0A++FILTER+(regex(%3Fg%2C%22russian%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				russian2 = data.results.bindings.length;
+				//alert(russian2);
+				}
+			});
+			return russian2;
+		})();
+		
+		var other2=(function () {
+		var other2 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Las+Vegas%22.%0A++FILTER+(!regex(%3Fg%2C%22spanish%22%2C%22i%22)%26%26!regex(%3Fg%2C%22korean%22%2C%22i%22)%26%26!regex(%3Fg%2C%22vietnamese%22%2C%22i%22)%26%26!regex(%3Fg%2C%22russian%22%2C%22i%22))%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				other2 = data.results.bindings.length;
+				//alert(other2);
+				}
+			});
+			return other2;
+		})();
+		
+		var spanish3=(function () {
+		var spanish3 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Fresno%22.%0A++FILTER+(regex(%3Fg%2C%22Spanish%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				spanish3 = data.results.bindings.length;
+				//alert(spanish3);
+				}
+			});
+			return spanish3;
+		})();
+		
+		var korean3=(function () {
+		var korean3 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Fresno%22.%0A++FILTER+(regex(%3Fg%2C%22korean%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				korean3 = data.results.bindings.length;
+				//alert(korean3);
+				}
+			});
+			return korean3;
+		})();
+		
+		var vietnamese3=(function () {
+		var vietnamese3 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Fresno%22.%0A++FILTER+(regex(%3Fg%2C%22vietnamese%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				vietnamese3 = data.results.bindings.length;
+				//alert(vietnamese3);
+				}
+			});
+			return vietnamese3;
+		})();
+		
+		var russian3=(function () {
+		var russian3 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Fresno%22.%0A++FILTER+(regex(%3Fg%2C%22russian%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				russian3 = data.results.bindings.length;
+				//alert(russian3);
+				}
+			});
+			return russian3;
+		})();
+		
+		var other3=(function () {
+		var other3 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Fresno%22.%0A++FILTER+(!regex(%3Fg%2C%22spanish%22%2C%22i%22)%26%26!regex(%3Fg%2C%22korean%22%2C%22i%22)%26%26!regex(%3Fg%2C%22vietnamese%22%2C%22i%22)%26%26!regex(%3Fg%2C%22russian%22%2C%22i%22))%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				other3 = data.results.bindings.length;
+				//alert(other3);
+				}
+			});
+			return other3;
+		})();
+		
+		var spanish4=(function () {
+		var spanish4 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Sacramento%22.%0A++FILTER+(regex(%3Fg%2C%22Spanish%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				spanish4 = data.results.bindings.length;
+				//alert(spanish4);
+				}
+			});
+			return spanish4;
+		})();
+		
+		var korean4=(function () {
+		var korean4 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Sacramento%22.%0A++FILTER+(regex(%3Fg%2C%22korean%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				korean4 = data.results.bindings.length;
+				//alert(korean4);
+				}
+			});
+			return korean4;
+		})();
+		
+		var vietnamese4=(function () {
+		var vietnamese4 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Sacramento%22.%0A++FILTER+(regex(%3Fg%2C%22vietnamese%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				vietnamese4 = data.results.bindings.length;
+				//alert(vietnamese4);
+				}
+			});
+			return vietnamese4;
+		})();
+		
+		var russian4=(function () {
+		var russian4 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Sacramento%22.%0A++FILTER+(regex(%3Fg%2C%22russian%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				russian4 = data.results.bindings.length;
+				//alert(russian4);
+				}
+			});
+			return russian4;
+		})();
+		
+		var other4=(function () {
+		var other4 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22Sacramento%22.%0A++FILTER+(!regex(%3Fg%2C%22spanish%22%2C%22i%22)%26%26!regex(%3Fg%2C%22korean%22%2C%22i%22)%26%26!regex(%3Fg%2C%22vietnamese%22%2C%22i%22)%26%26!regex(%3Fg%2C%22russian%22%2C%22i%22))%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				other4 = data.results.bindings.length;
+				//alert(other4);
+				}
+			});
+			return other4;
+		})();
+		
+		var spanish5=(function () {
+		var spanish5 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22New+York%22.%0A++FILTER+(regex(%3Fg%2C%22Spanish%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				spanish5 = data.results.bindings.length;
+				//alert(spanish5);
+				}
+			});
+			return spanish5;
+		})();
+		
+		var korean5=(function () {
+		var korean5 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22New+York%22.%0A++FILTER+(regex(%3Fg%2C%22korean%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				korean5 = data.results.bindings.length;
+				//alert(korean5);
+				}
+			});
+			return korean5;
+		})();
+		
+		var vietnamese5=(function () {
+		var vietnamese5 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22New+York%22.%0A++FILTER+(regex(%3Fg%2C%22vietnamese%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				vietnamese5 = data.results.bindings.length;
+				//alert(vietnamese5);
+				}
+			});
+			return vietnamese5;
+		})();
+		
+		var russian5=(function () {
+		var russian5 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22New+York%22.%0A++FILTER+(regex(%3Fg%2C%22russian%22%2C%22i%22)).%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				russian5 = data.results.bindings.length;
+				//alert(russian5);
+				}
+			});
+			return russian5;
+		})();
+		
+		var other5=(function () {
+		var other5 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Foffice%3E+%22New+York%22.%0A++FILTER+(!regex(%3Fg%2C%22spanish%22%2C%22i%22)%26%26!regex(%3Fg%2C%22korean%22%2C%22i%22)%26%26!regex(%3Fg%2C%22vietnamese%22%2C%22i%22)%26%26!regex(%3Fg%2C%22russian%22%2C%22i%22))%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				other5 = data.results.bindings.length;
+				//alert(other5);
+				}
+			});
+			return other5;
+		})();
+		
+		var data = google.visualization.arrayToDataTable([
+          ['Location', 'Spanish', 'Korean', 'Vietnamese','Russian','Others'],
+          ['Los Angeles', spanish1, korean1, vietnamese1,russian1,other],
+		  ['Las Vegas', spanish2, korean2, vietnamese2,russian2,other2],
+		  ['Fresno', spanish3, korean3, vietnamese3,russian3,other3],
+		  ['Sacramento', spanish4, korean4, vietnamese4,russian4,other4],
+		  ['New York', spanish5, korean5, vietnamese5,russian5,other5],
+        ]);
+
+        var options = {
+		width: 1200,
+          chart: {
+            title: 'Location-wise language breakdown',
+            subtitle: 'Language session counts for top 5 busiest locations',
+          },
+		  bars: 'horizontal', // Required for Material Bar Charts.
+		  axes: {
+            x: {
+              0: { side: 'top', label: 'Total no. of sessions'} // Top y-axis.
+            }
+          },
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        chart.draw(data, options);
+		
+		$("#obs").html("<h3><u>Observations</u></h3><ol><li>Los Angeles, Las Vegas, Fresno, Sacramento, New York are the 5 busiest language assitance locations.</li><li>Spanish is the top assisted language in all of these locations with others coming in second.</li><li>Others include languages like:<ol><li>Mandarin</li><li>Portuguese</li><li>Cantonese</li><li>Polish</li><li>Serbian</li><li>Arabic</li><li>Haitian Creole</li><li>Tagalog</li><li>Hebrew.. etc</li></ol></ol>");
+		
+      }
+    </script>
+  </head>
+  <body>
+
+		<h1 style="text-align:center; background-color:white; padding:5px;">Location-based Language breakdown</h1>
+
+		<div align="center" id="barchart_material" style="width: 1500px; height: 500px;"></div>
+	
+		<div id="obs"></div>
+	
+		<a href="Comparison of Language Assistance.html"> <b><center>HOME</center></b></a>	
+	
+  </body>
+</html>

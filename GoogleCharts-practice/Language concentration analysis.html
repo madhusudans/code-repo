@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Language Concentration Analysis</title>
+ 
+        <!-- load Google AJAX API -->
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            //load the Google Visualization API and the chart
+			google.charts.load('current', {'packages':['corechart']});
+            
+ 
+            //set callback
+            google.charts.setOnLoadCallback (createChart);
+ 
+            //callback function
+            function createChart() {
+ 
+                //create data table object
+                var dataTable = new google.visualization.DataTable();
+ 
+                //define columns
+                dataTable.addColumn('string','Language');
+                dataTable.addColumn('number', 'Total');
+ 
+				var spanish=(function () {
+		var spanish = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg+.%0A++FILTER+(regex(%3Fg%2C%22Spanish%22%2C%22i%22))%09%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+					spanish = data.results.bindings.length;
+				}
+			});
+			return spanish;
+		})();
+				
+				
+				var korean = (function () {
+		var korean = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg+.%0A++FILTER+(regex(%3Fg%2C%22Korean%22%2C%22i%22))%09%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+					korean = data.results.bindings.length;
+				}
+			});
+			return korean;
+		})(); 
+		
+		var vietnamese = (function () {
+		var vietnamese = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg+.%0A++FILTER+(regex(%3Fg%2C%22Vietnamese%22%2C%22i%22))%09%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+					vietnamese = data.results.bindings.length;
+				}
+			});
+			return vietnamese;
+		})(); 
+		
+		var russian = (function () {
+		var russian = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg+.%0A++FILTER+(regex(%3Fg%2C%22Russian%22%2C%22i%22))%09%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+					russian = data.results.bindings.length;
+				}
+			});
+			return russian;
+		})(); 
+		
+		var other = (function () {
+		var other = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fy%0AWHERE%0A%7B+%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg+.%0A++FILTER+(!regex(%3Fg%2C%22Vietnamese%22%2C%22i%22)%26%26!regex(%3Fg%2C%22Russian%22%2C%22i%22)%26%26!regex(%3Fg%2C%22Korean%22%2C%22i%22)%26%26!regex(%3Fg%2C%22Spanish%22%2C%22i%22))%09%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+					other = data.results.bindings.length;
+				}
+			});
+			return other;
+		})(); 
+		
+				
+		
+                //define rows of data
+                dataTable.addRows([['Spanish',spanish], ['Korean',korean],['Vietnamese',vietnamese],['Russian', russian],['Other', other]]);
+ 
+                //instantiate our chart objects
+                //var chart = new google.visualization.ColumnChart (document.getElementById('chart'));
+                var secondChart = new google.visualization.PieChart (document.getElementById('Chart2'));
+ 
+                //define options for visualization
+                var options = {is3D: true, title: 'Language Distribution'};
+	
+				var data = google.visualization.arrayToDataTable([
+          ['Language', 'Numbers'],
+          ['Spanish',     spanish],
+          ['Korean',      korean],
+          ['Vietnamese',  vietnamese],
+          ['Russian', russian],
+          ['Others',    other]
+        ]);
+ 
+                //draw our chart
+                //chart.draw(dataTable, options);
+                secondChart.draw(data, options);
+				
+			$("#obs").html("<h3><u>Observations</u></h3><ol><li>There are a total of 66 unique languages for which the DOJ has provided assistance in the year 2009</li><li>Amongst these - Spanish, Korean, Vietnamese and Russian are the 4 most popular languages respectively.</li><li>Others includes languages like:<ol><li>Mandarin</li><li>Portuguese</li><li>Cantonese</li><li>Polish</li><li>Serbian</li><li>Arabic</li><li>Haitian Creole</li><li>Tagalog</li><li>Hebrew.. and many more!</li></ol>");	
+			
+ 
+            }
+			
+	        </script>
+ 
+    </head>
+ 
+    <body>
+
+		<h1 style="text-align:center; background-color:white; padding:5px;">Language Concentration Analysis</h1>
+	
+        <!--Divs for our charts -->
+        <div id="Chart2" style="width: 900px; height: 500px;"></div>
+	
+		<div id="obs"></div>
+	
+		<a href="Comparison of Language Assistance.html"> <b><center>HOME</center></b></a>	
+	
+    </body>
+</html>

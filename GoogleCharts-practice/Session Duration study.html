@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Session Duration study</title>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+		
+		//("top");
+
+		
+		var spanish1=(function () {
+		var spanish1 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fd%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fduration%3E+%3Fd.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fmonth%3E+%3Fm.%0A++FILTER+(regex(%3Fg%2C%22Spanish%22%2C%22i%22)).%0A++FILTER+(regex(%3Fm%2C%225%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%226%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%227%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%228%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2210%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2211%22%2C%22i%22))++%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				var avgdurs1=0;
+		
+				for(var i in data.results.bindings){
+					var lineval = data.results.bindings[i];
+					//alert(lineval);
+					avgdurs1+=parseInt(lineval.d.value);
+				}
+					avgdurs1/=data.results.bindings.length;
+					//alert(avgdurs1);
+					spanish1 = avgdurs1;
+				}
+			});
+			return spanish1;
+		})();
+		
+		var korean1=(function () {
+		var korean1 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fd%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fduration%3E+%3Fd.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fmonth%3E+%3Fm.%0A++FILTER+(regex(%3Fg%2C%22korean%22%2C%22i%22)).%0A++FILTER+(regex(%3Fm%2C%225%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%226%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%227%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%228%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2210%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2211%22%2C%22i%22))++%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				var avgdurs1=0;
+		
+				for(var i in data.results.bindings){
+					var lineval = data.results.bindings[i];
+					//alert(lineval);
+					avgdurs1+=parseInt(lineval.d.value);
+				}
+					avgdurs1/=data.results.bindings.length;
+					//alert(avgdurs1);
+					korean1 = avgdurs1;
+				}
+			});
+			return korean1;
+		})();
+
+		var vietnamese1=(function () {
+		var vietnamese1 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fd%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fduration%3E+%3Fd.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fmonth%3E+%3Fm.%0A++FILTER+(regex(%3Fg%2C%22vietnamese%22%2C%22i%22)).%0A++FILTER+(regex(%3Fm%2C%225%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%226%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%227%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%228%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2210%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2211%22%2C%22i%22))++%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				var avgdurs1=0;
+		
+				for(var i in data.results.bindings){
+					var lineval = data.results.bindings[i];
+					//alert(lineval);
+					avgdurs1+=parseInt(lineval.d.value);
+				}
+					avgdurs1/=data.results.bindings.length;
+					//alert(avgdurs1);
+					vietnamese1 = avgdurs1;
+				}
+			});
+			return vietnamese1;
+		})();
+		
+		var russian1=(function () {
+		var russian1 = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fd%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fduration%3E+%3Fd.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fmonth%3E+%3Fm.%0A++FILTER+(regex(%3Fg%2C%22russian%22%2C%22i%22)).%0A++FILTER+(regex(%3Fm%2C%225%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%226%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%227%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%228%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2210%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2211%22%2C%22i%22))++%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				var avgdurs1=0;
+		
+				for(var i in data.results.bindings){
+					var lineval = data.results.bindings[i];
+					//alert(lineval);
+					avgdurs1+=parseInt(lineval.d.value);
+				}
+					avgdurs1/=data.results.bindings.length;
+					//alert(avgdurs1);
+					russian1 = avgdurs1;
+				}
+			});
+			return russian1;
+		})();
+		
+		var other=(function () {
+		var other = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "http://localhost:3030/project?query=SELECT+%3Fd%0AWHERE%0A%7B+%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fduration%3E+%3Fd.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Flanguage%3E+%3Fg.%0A++%3Fy+%3Chttp%3A%2F%2Fdata-gov.tw.rpi.edu%2Fvocab%2Fp%2F1499%2Fmonth%3E+%3Fm.%0A++FILTER+(!regex(%3Fg%2C%22Spanish%22%2C%22i%22)%26%26!regex(%3Fg%2C%22Korean%22%2C%22i%22)%26%26!regex(%3Fg%2C%22Vietnamese%22%2C%22i%22)%26%26!regex(%3Fg%2C%22Russian%22%2C%22i%22)).%0A++FILTER+(regex(%3Fm%2C%225%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%226%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%227%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%228%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%229%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2210%22%2C%22i%22)%7C%7Cregex(%3Fm%2C%2211%22%2C%22i%22))++%0A%7D%0A",
+				'dataType': "json",
+				'success': function (data) {
+				var avgdurs1=0;
+		
+				for(var i in data.results.bindings){
+					var lineval = data.results.bindings[i];
+					//alert(lineval);
+					avgdurs1+=parseInt(lineval.d.value);
+				}
+					avgdurs1/=data.results.bindings.length;
+					//alert(avgdurs1);
+					other = avgdurs1;
+				}
+			});
+			return other;
+		})();
+		
+		var data = google.visualization.arrayToDataTable([
+          ['Year', 'Spanish', 'Korean', 'Vietnamese','Russian','Others'],
+          ['2009', spanish1, korean1, vietnamese1,russian1,other],
+        ]);
+
+        var options = {
+		width: 500,
+          chart: {
+            title: 'Average Duration of Assistance in minutes',
+            subtitle: 'Average duration of language assistance session for year 2009',
+          },
+		  bars: 'vertical', // Required for Material Bar Charts.
+		  axes: {
+            y: {
+              0: { side: 'left', label: 'Average duration in minutes'} // Top y-axis.
+            }
+          },
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        chart.draw(data, options);
+		
+		$("#obs").html("<h3><u>Observations</u></h3><ol><li>The Average Duration of a language assistance session is around ~ 11 to 13 minutes for the year 2009.</li><li>Almost all languages have a similar average session duration.</li><li>Once again Others includes languages like:<ol><li>Mandarin</li><li>Portuguese</li><li>Cantonese</li><li>Polish</li><li>Serbian</li><li>Arabic</li><li>Haitian Creole</li><li>Tagalog</li><li>Hebrew.. etc</li></ol></ol>");
+		
+      }
+    </script>
+  </head>
+  <body>
+
+		<h1 style="text-align:center; background-color:white; padding:5px;">Session Duration study</h1>
+
+		<div align="center" id="barchart_material" style="width: 900px; height: 500px;"></div>
+	
+		<div id="obs"></div>
+	
+		<a href="Comparison of Language Assistance.html"> <b><center>HOME</center></b></a>	
+	
+  </body>
+</html>
